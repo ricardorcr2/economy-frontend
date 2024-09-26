@@ -22,7 +22,9 @@ export default function Despesa() {
 
     return (
         <div>
-            <p>Lista de Despesas</p>
+            <p>
+                Lista de Despesas
+            </p> 
             {despesas.map(despesa => (
                 <>
                 {despesa.descricao} / {despesa.categoria} / {despesa.valor} 
