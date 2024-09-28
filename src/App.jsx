@@ -9,28 +9,34 @@ import Relatorio from "./Relatorio";
 import Despesa from "./Despesa";
 import Receita from "./Receita";
 import DespesaForm from "./Despesa/form";
+import ReceitaForm from "./Receita/form";
+import './style.css'; // Importando o CSS para estilização
 
 export default function App() {
   return (
     <Router>
       <div>
-        <ul>
-          <li>
-            <Link to="/">Relatorios</Link>
-          </li>
-          <li>
-            <Link to="/despesa">Despesas</Link>
-          </li>
-          <li>
-             <Link to="despesa-form">Criar despesa</Link>
-          </li>
-          <li>
-            <Link to="/receita">Receitas</Link>
-          </li>
-        </ul>
-
-        <hr />
-
+        {/* Menu de navegação */}
+        <nav className="navbar">
+          <ul className="nav-menu">
+            <li className="nav-item">
+              <Link to="/">Relatórios</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/despesa">Despesas</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/despesa-form">Criar Despesa</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/receita">Receitas</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/receita-form">Criar Receita</Link>
+            </li>
+          </ul>
+        </nav>
+        
         <Switch>
           <Route exact path="/">
             <Relatorio />
@@ -43,6 +49,9 @@ export default function App() {
           </Route>
           <Route path="/receita">
             <Receita />
+          </Route>
+          <Route path="/receita-form">
+            <ReceitaForm />
           </Route>
         </Switch>
       </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './style.css'; // Certifique-se de importar o CSS
 
-export default function DespesaForm() {
+export default function ReceitaForm() {
   const [formData, setFormData] = useState({
     descricao: '',
     valor: '',
@@ -26,7 +26,7 @@ export default function DespesaForm() {
       categoria: formData.categoria
     };
 
-    axios.post('http://localhost:8080/despesa', newObject)
+    axios.post('http://localhost:8080/receita', newObject)
       .then((response) => {
         console.log('Object created successfully:', response.data);
       })
@@ -36,7 +36,7 @@ export default function DespesaForm() {
   };
 
   return (
-    <div className="despesa-form-container">
+    <div className="receita-form-container">
       <form onSubmit={handleSubmit}>
         <div>
           <label>Descrição:</label>
@@ -79,7 +79,7 @@ export default function DespesaForm() {
             required
           />
         </div>
-        <button type="submit">Criar Despesa</button>
+        <button type="submit">Criar Receita</button>
       </form>
     </div>
   );

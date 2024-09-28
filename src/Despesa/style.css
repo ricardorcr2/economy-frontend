@@ -1,39 +1,125 @@
-.container {
-    padding: 20px;
-    background-color: #f9f9f9;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-image: url("../images/economy.avif");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-attachment: fixed
+  
+}
+
+/* Estiliza o container do formulário */
+.despesa-form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #1e1e2fa8;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.title {
-    font-size: 20px;
-    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #f9f9f9;
+  }
+  
+  .despesa-form-container form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px; /* Espaçamento entre os campos */
+  }
+  
+  .despesa-form-container form div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .despesa-form-container label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #ffffff;
+  }
+  
+  .despesa-form-container input {
+    padding: 12px;
+    background-color: #1e1e2fa8;
+    border-radius: 4px;
+    background-color: #2c2c3a;
+    color: #ffffff;
+  }
+  
+  .despesa-form-container button {
+    padding: 12px 15px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    grid-column: span 2; /* O botão ocupará toda a largura */
+  }
+  
+  .despesa-form-container button:hover {
+    background-color: #4caf9e;
+  }
+  
+  /* Estiliza o container */
+.despesa-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #1e1e2fa8;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+  }
+  
+  .despesa-container p {
     text-align: center;
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 20px;
-}
-
-.expense-table {
+  }
+  
+  /* Estiliza a tabela */
+  .despesa-table {
     width: 100%;
     border-collapse: collapse;
-}
-
-.expense-table th {
-    background-color: #4CAF50;
-    color: white;
+    margin: 0 auto;
+    background-color: #1e1e2fa8;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .despesa-table th,
+  .despesa-table td {
+    padding: 12px;
+    border: 1px solid #444;
     text-align: left;
-    padding: 10px;
-    border: 1px solid #ddd;
-}
-
-.expense-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-}
-
-.even-row {
-    background-color: #f2f2f2;
-}
-
-.odd-row {
-    background-color: white;
-}
+  }
+  
+  .despesa-table th {
+    background-color: #4caf9e;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .despesa-table tbody tr:nth-child(even) {
+    background-color: #333344;
+  }
+  
+  .despesa-table tbody tr:nth-child(odd) {
+    background-color: #2c2c3a;
+  }
+  
+  /* Efeito de hover nas linhas */
+  .despesa-table tbody tr:hover {
+    background-color: #3a3a55;
+    cursor: pointer;
+  }
+  

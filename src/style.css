@@ -1,0 +1,41 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  body {
+    background-color: white;
+  }
+  
+  /* Estilização do menu de navegação */
+  .navbar {
+    background-color: #1cd3c441; /* Cor de fundo do navbar */
+    padding: 15px 20px; /* Espaçamento interno */
+  }
+  
+  .nav-menu {
+    display: flex; /* Usando flexbox para o layout horizontal */
+    justify-content: space-around; /* Espaçando os itens uniformemente */
+    list-style: none; /* Removendo os marcadores da lista */
+  }
+  
+  .nav-item {
+    color: #020808; /* Cor do texto */
+    padding: 10px 20px; /* Espaçamento interno */
+    text-decoration: none; /* Removendo sublinhado */
+    transition: background-color 0.3s ease; /* Efeito de transição para hover */
+    border-radius: 4px; /* Bordas arredondadas */
+  }
+  
+  .nav-item:hover {
+    background-color: white; /* Cor de fundo ao passar o mouse */
+  }
+  
+  /* Estilização do separador */
+  hr {
+    margin: 20px 0; /* Espaçamento acima e abaixo do hr */
+  }
+  
