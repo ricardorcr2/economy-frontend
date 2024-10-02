@@ -11,6 +11,8 @@ import Receita from "./Receita";
 import DespesaForm from "./Despesa/form";
 import ReceitaForm from "./Receita/form";
 import './style.css'; // Importando o CSS para estilização
+import Signin from "./Signin";
+import Signup from "./Signup";
 
 export default function App() {
   return (
@@ -34,12 +36,24 @@ export default function App() {
             <li className="nav-item">
               <Link to="/receita-form">Criar Receita</Link>
             </li>
+            <li className="nav-item">
+              <Link to="/signin">Entrar</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/signup">Cadastrar</Link>
+            </li>
           </ul>
         </nav>
         
         <Switch>
           <Route exact path="/">
             <Relatorio />
+          </Route>
+          <Route path="/signin">
+           <Signin />
+          </Route>
+          <Route path="/signup">
+           <Signup />
           </Route>
           <Route path="/despesa">
             <Despesa />
