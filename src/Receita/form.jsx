@@ -26,9 +26,17 @@ export default function ReceitaForm() {
       categoria: formData.categoria
     };
 
-    axios.post('http://localhost:8080/receita', newObject)
+    const token = localStorage.getItem("token");
+    const axiosConfig = {
+      headers: {
+        "token": token 
+      }
+    }
+
+    axios.post('http://localhost:8080/receita', newObject, axiosConfig)
       .then((response) => {
         console.log('Object created successfully:', response.data);
+        window.location.href = "/receita";
       })
       .catch((error) => {
         console.error('There was an error creating the object:', error);

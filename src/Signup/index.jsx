@@ -27,6 +27,7 @@ export default function Signup() {
         axios.post('http://localhost:8080/user/create', newObject)
             .then((response) => {
                 console.log('Object created successfully:', response.data);
+                window.location.href = "/signin";
             })
             .catch((error) => {
                 console.error('There was an error creating the object:', error);

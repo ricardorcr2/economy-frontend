@@ -6,7 +6,13 @@ export default function Receita() {
   const [receitas, setReceitas] = useState([]);
 
   async function getReceitas() {
-    const response = await axios.get('http://localhost:8080/receita');
+    const token = localStorage.getItem("token");
+    const axiosConfig = {
+      headers: {
+        "token": token
+      }
+    }
+    const response = await axios.get('http://localhost:8080/receita', axiosConfig);
     setReceitas(response.data);
   }
 

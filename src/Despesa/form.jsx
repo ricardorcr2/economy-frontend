@@ -26,9 +26,17 @@ export default function DespesaForm() {
       categoria: formData.categoria
     };
 
-    axios.post('http://localhost:8080/despesa', newObject)
+    const token = localStorage.getItem("token");
+    const axiosConfig = {
+      headers: {
+        "token": token 
+      }
+    }
+
+    axios.post('http://localhost:8080/despesa', newObject, axiosConfig)
       .then((response) => {
         console.log('Object created successfully:', response.data);
+        window.location.href = "/despesa";
       })
       .catch((error) => {
         console.error('There was an error creating the object:', error);
