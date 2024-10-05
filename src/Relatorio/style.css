@@ -1,0 +1,65 @@
+.relatorio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tables-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .despesa-container, .receita-container {
+    width: 45%; /* Cada tabela vai ocupar 45% da largura */
+    text-align: center;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th, table td {
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .total-container {
+    margin-top: 1px;
+    font-weight: bold;
+  }
+  
+  .total-despesa-container {
+    margin-top: 1px;
+    font-weight: bold;
+    color: red;
+  }
+
+  .resultado-container {
+    text-align: center;
+    margin-top: 2px;
+  }
+  
+  .resultado-container h2 {
+    max-width: 1000px;
+    margin: 1px auto;
+    padding: 20px;
+    background-color: #1e1e2fa8;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #f9f9f9;
+    margin-bottom: 20px;
+
+  }
+  
+  .grafico-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  canvas {
+    max-width: 100%;
+  }

@@ -4,6 +4,7 @@ import axios from 'axios';
 
 export default function Despesa() {
   const [despesas, setDespesas] = useState([]);
+  const [total, setTotal] = useState(0)
 
   async function getDespesas() {
     const token = localStorage.getItem("token");
@@ -14,6 +15,8 @@ export default function Despesa() {
     }
     const response = await axios.get('http://localhost:8080/despesa', axiosConfig);
     setDespesas(response.data);
+    const totalValor = response.data.reduce((acc, despesa) => acc + despesa.valor, 0);
+    setTotal(totalValor);
   }
 
   useEffect(() => {
@@ -23,11 +26,13 @@ export default function Despesa() {
   return (
     <div className="despesa-container">
       <p>Lista de Despesas</p>
+      <div>
       <table className="despesa-table">
         <thead>
           <tr>
             <th>Descrição</th>
             <th>Categoria</th>
+            <th>Data</th>
             <th>Valor</th>
           </tr>
         </thead>
@@ -36,11 +41,16 @@ export default function Despesa() {
             <tr key={index}>
               <td>{despesa.descricao}</td>
               <td>{despesa.categoria}</td>
+              <td>{new Date(despesa.data).toLocaleDateString('pt-BR')}</td>
               <td>R$ {despesa.valor.toFixed(2)}</td>
             </tr>
           ))}
         </tbody>
       </table>
+      <div className="total-despesa-container">
+          <strong>Total:</strong> R$ {total.toFixed(2)}
+        </div>
+      </div>
     </div>
   );
 }

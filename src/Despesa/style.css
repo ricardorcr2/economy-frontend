@@ -1,13 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-}
-
 body {
-  background-image: url("../images/economy.avif");
+  background-image: url("../images/digital-increasing-bar-graph-with-businessman-hand-overlay.jpg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -56,7 +48,7 @@ body {
     margin-top: 20px;
     border: none;
     border-radius: 4px;
-    background-color: #4CAF50;
+    background-color: #151e97;
     color: #ffffff;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -103,7 +95,7 @@ body {
   }
   
   .despesa-table th {
-    background-color: #4caf9e;
+    background-color: #151e97;
     color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -123,3 +115,14 @@ body {
     cursor: pointer;
   }
   
+  .total-despesa-container {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: right;
+    color: red;
+    padding: 10px;
+    background-color: #151e97; /* Cor de fundo suave */
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+  }

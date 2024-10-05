@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './style.css'
+import './style.css';
 import axios from 'axios';
 
 export default function Signin() {
@@ -24,38 +24,44 @@ export default function Signin() {
 
         axios.post('http://localhost:8080/user/login', newObject)
             .then((response) => {
-                console.log('Object created successfully:', response.data);
+                console.log('Login successful:', response.data);
                 localStorage.setItem("token", response.data.token);
                 window.location.href = "/";
             })
             .catch((error) => {
-                console.error('There was an error creating the object:', error);
+                console.error('Login failed:', error);
             });
     };
 
-    return <form onSubmit={handleSubmit}>
-        <div>
-            <label>E-mail</label>
-            <input
-                type='text'
-                name='email'
-                value={FormData.email}
-                onChange={handleChange}
-                required
-            />
-        </div>
-        <div>
-            <label>Senha</label>
-            <input
-                type='password'
-                name='senha'
-                value={FormData.senha}
-                onChange={handleChange}
-                required
-            />
-        </div>
+    return (
+        <div className="login-container">
+            <div className="login-box">
+                <h2>Login</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="input-group">
+                        <label htmlFor="email">E-mail</label>
+                        <input
+                            type='text'
+                            name='email'
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="input-group">
+                        <label htmlFor="senha">Senha</label>
+                        <input
+                            type='password'
+                            name='senha'
+                            value={formData.senha}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
 
-        <button type="submit">Logar</button>
-
-    </form>
+                    <button type="submit" className="login-button">Logar</button>
+                </form>
+            </div>
+        </div>
+    );
 }
