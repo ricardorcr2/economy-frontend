@@ -47,7 +47,7 @@ export default function Receita() {
           ))}
         </tbody>
       </table>
-      <div className="total-container">
+      <div className="total-receita-container">
           <strong>Total:</strong> R$ {total.toFixed(2)}
         </div>
       </div>

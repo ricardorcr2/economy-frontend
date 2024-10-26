@@ -37,6 +37,12 @@
     color: red;
   }
 
+  .total-receita-container {
+    margin-top: 1px;
+    font-weight: bold;
+    color: green;
+  }
+
   .resultado-container {
     text-align: center;
     margin-top: 2px;
@@ -60,6 +66,20 @@
     margin: 0 auto;
   }
   
-  canvas {
-    max-width: 100%;
-  }
+/* Contêiner para o gráfico */
+.chart-container {
+  width: 80%;           /* Largura do contêiner do gráfico (pode ajustar conforme necessário) */
+  max-width: 600px;    /* Largura máxima para manter o gráfico em um tamanho razoável */
+  margin: 0 auto;      /* Centraliza o contêiner horizontalmente */
+  padding: 20px;       /* Espaçamento interno */
+  background-color: #f9f9f9; /* Cor de fundo do contêiner */
+  border-radius: 8px;  /* Arredonda os cantos do contêiner */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo para o canvas */
+canvas {
+  width: 100% !important;  /* Faz com que o canvas ocupe toda a largura do contêiner */
+  height: auto !important;  /* Mantém a proporção do canvas */
+  max-height: 400px;        /* Altura máxima do canvas (ajuste conforme necessário) */
+}

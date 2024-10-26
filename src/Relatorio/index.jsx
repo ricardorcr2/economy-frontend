@@ -1,9 +1,74 @@
 import { useEffect, useState } from 'react';
 import './style.css';
 import axios from 'axios';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
+import { Bar, Doughnut } from 'react-chartjs-2';
+import ChartDataLabels from 'chartjs-plugin-datalabels'; // Importando o plugin
+import { drawPointLegend } from 'chart.js/helpers';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, ArcElement, ChartDataLabels, Legend);
+
+
+  // est para gráfico
+  const FinanceChart = ({ totalReceitas, totalDespesas }) => {
+    const dataBar= {
+      //options: {legend: { display: false},},
+      labels: ['Receitas', 'Despesas'],
+      datasets: [
+        {
+          label: ['Receitas', 'Despesas'],
+          data: [totalReceitas, totalDespesas],
+          backgroundColor: ['#4CAF50', '#F44336'], // Verde para receitas, vermelho para despesas
+          borderColor: ['#388E3C', '#D32F2F'],
+          borderWidth: 1,  
+          
+        },  
+      ], 
+    }; 
+  
+    return <Bar data={dataBar} />;
+  }; 
+
+  // Componente para gráfico de pizza
+const PieChart = ({ totalDespesas, totalReceitas }) => {
+  const dataPie = {
+    labels: ['Despesas', 'Receitas'],
+    datasets: [
+      {
+        data: [totalDespesas, totalReceitas],
+        backgroundColor: ['#F44336', '#4CAF50'],
+        hoverBackgroundColor: ['#D32F2F', '#388E3C'],
+      },
+    ],
+  };
+
+  const optionsPie = {
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top',
+        reverse: true
+      },
+      datalabels: {
+        formatter: (value, ctx) => {
+          const total = totalReceitas + totalDespesas;
+          const percentage = ((value / total) * 100).toFixed(2) + '%';
+          return percentage;
+        },
+        color: '#fff', // Cor do texto das porcentagens
+        font: {
+          weight: 'bold',
+          size: '16', // Tamanho da fonte das porcentagens
+        },
+      },
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+  };
+
+  return <Doughnut data={dataPie} options={optionsPie} />;
+};
 
 export default function Relatorio() {
   const [despesas, setDespesas] = useState([]);
@@ -44,26 +109,43 @@ export default function Relatorio() {
     getReceitas();
   }, []);
 
-  const data = {
-    labels: ['Receitas', 'Despesas'],
-    datasets: [
-      {
-        label: 'Valores',
-        data: [totalReceitas, totalDespesas],
-        backgroundColor: ['#4CAF50', '#F44336'], // Cores: verde para receitas e vermelho para despesas
-        borderColor: ['#388E3C', '#D32F2F'],
-        borderWidth: 1,
-      },
-    ],
-  };
-
   return (
     <div className="relatorio-container">
       <h1>Relatório de Receitas e Despesas</h1>
 
+      <FinanceChart totalDespesas={totalDespesas} totalReceitas={totalReceitas} />  
+      <PieChart totalDespesas={totalDespesas} totalReceitas={totalReceitas} /> {/* Adicionando gráfico de pizza */}
+    
+
       {/* Contêiner das tabelas */}
       <div className="tables-container">
-        {/* Tabela de Despesas */}
+        {/* Tabela de Receitas */}
+        <div className="receita-container">
+          <p>Lista de Receitas</p>
+          <table className="receita-table">
+            <thead>
+              <tr>
+                <th>Descrição</th>
+                <th>Categoria</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              {receitas.map((receita, index) => (
+                <tr key={index}>
+                  <td>{receita.descricao}</td>
+                  <td>{receita.categoria}</td>
+                  <td>R$ {receita.valor.toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="total-receita-container">
+            <strong>Total Receitas:</strong> R$ {totalReceitas.toFixed(2)}
+          </div>
+        </div>
+
+        {/* Tabela de Despesass */}
         <div className="despesa-container">
           <p>Lista de Despesas</p>
           <table className="despesa-table">
@@ -86,32 +168,6 @@ export default function Relatorio() {
           </table>
           <div className="total-despesa-container">
             <strong>Total Despesas:</strong> R$ {totalDespesas.toFixed(2)}
-          </div>
-        </div>
-
-        {/* Tabela de Receitas */}
-        <div className="receita-container">
-          <p>Lista de Receitas</p>
-          <table className="receita-table">
-            <thead>
-              <tr>
-                <th>Descrição</th>
-                <th>Categoria</th>
-                <th>Valor</th>
-              </tr>
-            </thead>
-            <tbody>
-              {receitas.map((receita, index) => (
-                <tr key={index}>
-                  <td>{receita.descricao}</td>
-                  <td>{receita.categoria}</td>
-                  <td>R$ {receita.valor.toFixed(2)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="total-container">
-            <strong>Total Receitas:</strong> R$ {totalReceitas.toFixed(2)}
           </div>
         </div>
       </div>
