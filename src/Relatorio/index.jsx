@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './style.css';
 import axios from 'axios';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, plugins } from 'chart.js';
 import { Bar, Doughnut } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels'; // Importando o plugin
 import { drawPointLegend } from 'chart.js/helpers';
@@ -26,8 +26,18 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, ArcElem
         },  
       ], 
     }; 
+
+    const optionBar = {
+      plugins: {
+        legend: {
+          display: false,
+          position: 'top',
+          reverse: true
+        },  
+      }
+    }
   
-    return <Bar data={dataBar} />;
+    return <Bar data={dataBar} options={optionBar}/>;
   }; 
 
   // Componente para gráfico de pizza
